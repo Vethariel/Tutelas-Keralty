@@ -1,0 +1,36 @@
+# Material entregado por Kantera (contiene nombres de personas; no confirmado para publicación)
+insumos/
+
+# Datos reales o exportaciones locales: nunca al repositorio
+*.real.*
+datos-reales/
+
+# Secretos y configuración local
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+credentials*.json
+service-account*.json
+
+# Dependencias y builds
+node_modules/
+dist/
+build/
+.next/
+.vite/
+coverage/
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Editor y sistema operativo
+.vscode/*
+!.vscode/extensions.json
+.idea/
+.DS_Store
+Thumbs.db
+*.swp
+~$*
