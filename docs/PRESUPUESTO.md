@@ -2,7 +2,7 @@
 
 Reto Kantera – Universidad Nacional de Colombia · Clínica Universitaria Colombia (Keralty / Colsanitas)
 
-Complemento de [PROPUESTAS.md](PROPUESTAS.md).
+Complemento de [PROPUESTAS.md](PROPUESTAS.md). El retorno de esta inversión se analiza en [PROPUESTA_DE_VALOR.md](PROPUESTA_DE_VALOR.md).
 
 > **Estado:** estimación preliminar, construida solo con información pública y con los datos del reto. Los precios de proveedores de IA y nube cambian a menudo, los salarios son referencias de mercado y los volúmenes son supuestos. Este documento muestra **cómo se compone el costo** y **en qué orden de magnitud está**; no es una cotización. Precios consultados el **17 de noviembre de 2026**. El 18 de noviembre se ajustó el recurso humano a un equipo pequeño con desarrollo asistido por IA (sección 7).
 

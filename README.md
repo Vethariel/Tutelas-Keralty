@@ -18,13 +18,15 @@ Propuesta de apoyo para leer, clasificar, priorizar y direccionar tutelas, pensa
 .
 ├── docs/
 │   ├── PROPUESTAS.md        Descripción de las dos propuestas
-│   └── PRESUPUESTO.md       Estructura de presupuesto de cada propuesta
+│   ├── PRESUPUESTO.md       Estructura de presupuesto de cada propuesta
+│   └── PROPUESTA_DE_VALOR.md  Por qué es una inversión: retorno y punto de equilibrio
 ├── mockup-propuesta-b/      Mockup de la plataforma (Propuesta B)
 └── insumos/                 Material entregado por Kantera (no se publica; ver abajo)
 ```
 
 - [Propuestas](docs/PROPUESTAS.md)
 - [Presupuesto](docs/PRESUPUESTO.md)
+- [Propuesta de valor](docs/PROPUESTA_DE_VALOR.md)
 - [Mockup de la Propuesta B](mockup-propuesta-b/README.md)
 
 ## Insumos del reto
