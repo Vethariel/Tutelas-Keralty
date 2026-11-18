@@ -4,7 +4,7 @@ Reto Kantera – Universidad Nacional de Colombia · Clínica Universitaria Colo
 
 Complemento de [PROPUESTAS.md](PROPUESTAS.md).
 
-> **Estado:** estimación preliminar, construida solo con información pública y con los datos del reto. Los precios de proveedores de IA y nube cambian a menudo, los salarios son referencias de mercado y los volúmenes son supuestos. Este documento muestra **cómo se compone el costo** y **en qué orden de magnitud está**; no es una cotización. Precios consultados el **17 de noviembre de 2026**.
+> **Estado:** estimación preliminar, construida solo con información pública y con los datos del reto. Los precios de proveedores de IA y nube cambian a menudo, los salarios son referencias de mercado y los volúmenes son supuestos. Este documento muestra **cómo se compone el costo** y **en qué orden de magnitud está**; no es una cotización. Precios consultados el **17 de noviembre de 2026**. El 18 de noviembre se ajustó el recurso humano a un equipo pequeño con desarrollo asistido por IA (sección 7).
 
 ---
 
@@ -29,18 +29,19 @@ Complemento de [PROPUESTAS.md](PROPUESTAS.md).
 
 | | Propuesta A: Piloto en la clínica | Propuesta B: Plataforma para la red Keralty |
 |---|---|---|
-| Duración del desarrollo | ~10 semanas | ~8 meses hasta el piloto en 2 clínicas |
-| Equipo | 3–4 personas, la mayoría a tiempo parcial | 8–9 personas |
-| Costo de desarrollo (valor de mercado) | **~78 M COP** (~89 M COP con 15 % de contingencia) | **~870 M COP** (~1.000 M COP con 15 % de contingencia) |
-| Costo de operación mensual | **~1,4–1,5 M COP** | **~34–37 M COP** con 5 clínicas (~7 M COP por clínica) |
+| Duración | ~5–6 semanas de calendario (2–3 semanas de desarrollo) | ~4,5 meses hasta el piloto en 2 clínicas |
+| Equipo | 1 ingeniero de producto + apoyo puntual en QA y seguridad | 2 ingenieros senior + QA, DevOps y diseño a tiempo parcial |
+| Costo de desarrollo | **~29–38 M COP** (incluye 15 % de contingencia) | **~350–400 M COP** (incluye 20 % de contingencia) |
+| Costo de operación mensual | **~1,0–1,4 M COP** | **~16–19 M COP** con 5 clínicas (~3,5 M COP por clínica) |
 | IA (tokens) al mes | USD 2–35 | USD 60–1.300, según el modelo y el volumen |
-| Total del primer año | **~100–105 M COP** | **~1.100–1.200 M COP** |
+| Total del primer año | **~40–50 M COP** | **~480–530 M COP** |
 
-Tres conclusiones:
+Cuatro conclusiones:
 
-1. **El costo de la IA es marginal.** Con los volúmenes estimados, procesar una tutela cuesta entre **USD 0,002 y 0,22** (entre 8 y 700 pesos), según el modelo. Lo que define el presupuesto son las **personas** y, en la Propuesta B, el **cumplimiento** (seguridad y protección de datos), no los tokens.
-2. **Un modelo propio no se justifica por costo.** Una sola GPU en la nube encendida todo el mes cuesta más que el consumo por API de toda la red en el escenario más alto con modelos económicos. Solo tendría sentido si una política de datos impide usar un proveedor externo.
-3. **En el marco del reto, la Propuesta A no tiene costo de personal para la clínica**, porque el equipo académico la desarrolla. Lo que la clínica aporta son horas de sus equipos (~125 horas) y, a lo sumo, unos pocos dólares al mes de IA.
+1. **El equipo es pequeño porque el desarrollo es asistido por IA.** Escribir el código ya no es lo que más tiempo toma. El presupuesto se concentra en una persona que entiende el problema de negocio y tiene la pericia técnica para llevarlo a la realidad, y en lo que la IA no reemplaza: **validar, probar y asegurar**.
+2. **El costo de la IA es marginal.** Procesar una tutela cuesta entre **USD 0,002 y 0,22** (entre 8 y 700 pesos), según el modelo. Lo que define el presupuesto son las **personas** y, en la Propuesta B, el **cumplimiento** (seguridad y protección de datos), no los tokens.
+3. **Un modelo propio no se justifica por costo.** Una sola GPU en la nube encendida todo el mes cuesta más que el consumo por API de toda la red en el escenario más alto con modelos económicos. Solo tendría sentido si una política de datos impide usar un proveedor externo.
+4. **En el marco del reto, la Propuesta A no tiene costo de personal para la clínica**, porque el equipo académico la desarrolla. Lo que la clínica aporta son horas de sus equipos (~125 horas) y, a lo sumo, unos pocos dólares al mes de IA.
 
 ---
 
@@ -53,9 +54,10 @@ Tres conclusiones:
 | Volumen de la Propuesta B | 1.500 / 5.000 / 12.000 casos al mes | Escenarios hipotéticos de 2, 5 y 10 clínicas de la red. **No hay datos reales de volumen de la red.** |
 | Tamaño del documento | 15 páginas (típico) y 40 (exigente) | Escrito de tutela, auto admisorio y anexos. Se asumen ~600 tokens por página de texto en español. |
 | Sobrecosto operativo | +25 % de tokens | Reintentos, reprocesos, duplicados y pruebas |
-| Costo empresa del personal | **1,5 × el salario bruto** | Prestaciones, seguridad social y parafiscales suman entre el 38 % y el 58 % según la fuente; se usa el punto medio. |
-| Horas por mes | 160 | Para convertir costo mensual en costo por hora |
-| Contingencia | 15 % | Sobre el costo de desarrollo |
+| Forma de trabajo | **Desarrollo asistido por IA** | El código se genera y revisa con herramientas de IA; las horas se concentran en diseño, validación, pruebas y seguridad (sección 7.1) |
+| Contratación | **Contratistas por horas** | Tarifas de mercado colombiano 2026; ya incluyen los costos del contratista, sin factor prestacional adicional |
+| Horas por mes | 160 | Para convertir dedicación en horas |
+| Contingencia | 15 % en A · 20 % en B | Sobre el costo de desarrollo. En B es mayor por la dependencia de pocas personas clave (sección 11). |
 
 ---
 
@@ -201,7 +203,7 @@ Consiste en ejecutar un modelo de pesos abiertos en infraestructura controlada p
 | **GPU en Google Cloud** (g2-standard-4, 1 × NVIDIA L4 de 24 GB) | USD 0,71 por hora bajo demanda | Encendida todo el mes: **~USD 516** (~1,7 M COP). Solo en horario laboral (12 h × 22 días): **~USD 187** (~0,6 M COP). Con alta disponibilidad (2 instancias): **~USD 1.030**. |
 | **GPU spot en Google Cloud** | ~USD 0,28–0,33 por hora | Más barata, pero Google puede apagarla en cualquier momento. No sirve para casos urgentes. |
 | **Servidor propio con GPU** | Orden de decenas de millones de COP (requiere cotización) | Más el costo de alojamiento, energía, mantenimiento y reposición. |
-| **Operación del modelo (MLOps)** | 20–40 horas al mes de un ingeniero: **~2–4 M COP al mes** | Actualizaciones, monitoreo, seguridad y reevaluación de calidad |
+| **Operación del modelo (MLOps)** | 20–40 horas al mes del ingeniero de producto: **~3–7 M COP al mes** | Actualizaciones, monitoreo, seguridad y reevaluación de calidad |
 
 Un modelo que cabe en una L4 (alrededor de 8 a 14 mil millones de parámetros, cuantizado) tendrá menos calidad de extracción que los modelos comerciales. Hay que medirlo con el mismo conjunto de evaluación antes de elegirlo.
 
@@ -209,8 +211,8 @@ Un modelo que cabe en una L4 (alrededor de 8 a 14 mil millones de parámetros, c
 
 | Escenario | API económica + enrutamiento | Modelo propio (1 GPU encendida todo el mes + operación) |
 |---|---|---|
-| A base | USD 4–9 al mes | USD 516 + 2–4 M COP al mes |
-| B 10 clínicas | USD 148–341 al mes | USD 516–1.030 + 2–4 M COP al mes |
+| A base | USD 4–9 al mes | USD 516 + 3–7 M COP al mes |
+| B 10 clínicas | USD 148–341 al mes | USD 516–1.030 + 3–7 M COP al mes |
 
 **Con estos volúmenes, el modelo propio siempre es más caro.** Su único argumento es de **política de datos**: que Jurídica o Seguridad de la Información no autoricen enviar documentos a un proveedor externo.
 
@@ -220,41 +222,51 @@ Por eso las dos propuestas dejan la capa de IA **aislada e intercambiable**. Si 
 
 ## 7. Recurso humano
 
-### 7.1 Tarifas de referencia
+### 7.1 Por qué un equipo pequeño
 
-Salarios brutos mensuales en Bogotá, punto medio de los rangos publicados para 2026. El costo empresa aplica el factor de 1,5.
+Con herramientas de IA, construir una primera versión funcional toma días o pocas semanas. Lo difícil no se acelera al mismo ritmo:
 
-| Perfil | Nivel | Salario bruto mensual | Costo empresa mensual | Costo por hora |
-|---|---|---|---|---|
-| Gestor de proyecto / dueño de producto | Semi-senior | 10,0 M | 15,0 M | ~94.000 |
-| Líder técnico / arquitecto | Senior | 16,0 M | 24,0 M | ~150.000 |
-| Desarrollador backend / Apps Script | Semi-senior | 9,0 M | 13,5 M | ~84.000 |
-| Ingeniero de IA / datos | Semi-senior | 10,0 M | 15,0 M | ~94.000 |
-| Desarrollador frontend | Semi-senior | 8,5 M | 12,8 M | ~80.000 |
-| DevOps / infraestructura | Semi-senior | 11,0 M | 16,5 M | ~103.000 |
-| Analista de pruebas (QA) | Junior / semi-senior | 6,0 M | 9,0 M | ~56.000 |
-| Analista funcional / UX | Semi-senior | 7,0 M | 10,5 M | ~66.000 |
-| Asesoría en seguridad y protección de datos | Consultoría externa | — | — | ~200.000 (estimado) |
+- La IA ahorra alrededor del **46 % del tiempo en tareas rutinarias** de programación, pero **menos del 10 % en trabajo complejo**.
+- En una medición sobre más de 14.000 desarrolladores, el tiempo para tener código listo bajó un 32 %, pero **el tiempo de revisión subió un 41 % y los defectos un 50 %**.
 
-Las fuentes dan rangos amplios: por ejemplo, un backend en Bogotá gana entre 3,5 y 6 M COP (junior), entre 7 y 12 M (semi-senior) y entre 13 y 22 M (senior). Las tarifas por contrato de prestación de servicios pueden ser distintas.
+Es decir, el trabajo se traslada de **escribir** código a **validarlo**. Por eso el equipo se organiza así:
 
-### 7.2 Perfiles y responsabilidades
+1. **Un ingeniero de producto senior** como pieza central: entiende el problema de negocio, diseña la solución, desarrolla con IA y toma las decisiones técnicas.
+2. **Revisión independiente**: alguien distinto de quien escribió el código lo prueba (QA) y revisa su seguridad.
+3. **Apoyo especializado puntual**: infraestructura, diseño y asesoría en protección de datos, solo cuando se necesitan.
+
+### 7.2 Tarifas de referencia
+
+Tarifas por hora de contratistas en Colombia (2026). Ya incluyen los costos del contratista.
+
+| Perfil | COP por hora | USD aproximados | Referencia de mercado |
+|---|---|---|---|
+| Ingeniero de producto senior (negocio + técnica, desarrollo con IA) | 165.000 | ~50 | Senior independiente en Colombia: USD 32–41 la mayoría de contratos; especializado, USD 35–60 |
+| Desarrollador senior | 150.000 | ~45 | Ídem |
+| Analista de pruebas (QA) | 100.000 | ~30 | |
+| DevOps / seguridad de infraestructura | 170.000 | ~52 | Perfil especializado, parte alta del rango |
+| Diseño UX | 110.000 | ~33 | |
+| Asesoría en seguridad y protección de datos | 200.000 | ~60 | Consultoría especializada (estimado) |
+
+Como contraste, una agencia cobra por un senior en Latinoamérica entre USD 50 y 90 por hora. Contratar por agencia subiría el costo de personal en un 20–80 %.
+
+### 7.3 Perfiles y responsabilidades
 
 | Perfil | Responsabilidades | A | B |
 |---|---|---|---|
-| Gestor de proyecto / dueño de producto | Alcance, prioridades, relación con la clínica, seguimiento | Lo asume el líder técnico | Sí |
-| Líder técnico / arquitecto | Arquitectura, decisiones técnicas, revisión de código, seguridad del diseño | Parcial (20 %) | Sí |
-| Desarrollador backend / Apps Script | Ingreso de correos, OCR, motor de reglas, API, integraciones | Sí (Apps Script) | Sí (2 personas) |
-| Ingeniero de IA / datos | Prompts, esquema de extracción, conjunto de evaluación, elección de modelo | Parcial (50 %) | Sí |
-| Desarrollador frontend | Interfaz web, roles, tablero | — | Sí |
-| DevOps / infraestructura | Nube, ambientes, despliegue, monitoreo, respaldos | — | Parcial (50 %) |
-| Analista de pruebas (QA) | Pruebas funcionales, de regresión y de seguridad básica | — | Sí |
-| Analista funcional / UX | Levantamiento del proceso, diseño de pantallas y tablero, capacitación | Parcial (50 %) | Sí |
-| Asesoría en seguridad y datos | Evaluación de impacto, contratos, controles | Lo cubren las áreas de la clínica | Externa (~120 h) |
+| Ingeniero de producto senior | Entender el proceso, diseñar, desarrollar con IA, evaluar modelos, decidir la arquitectura, relación técnica con la clínica | 120–160 h | 100 % · 4,5 meses |
+| Desarrollador senior | Desarrollo y revisión cruzada de código; conoce todo el sistema para reducir la dependencia de una sola persona | — | 100 % · 3,5 meses |
+| Analista de pruebas (QA) | Pruebas funcionales y de regresión, independientes de quien desarrolla | 30–40 h | 50 % · 3 meses |
+| DevOps / seguridad de infraestructura | Nube con servicios administrados, despliegue, monitoreo, respaldos, endurecimiento | — | 25 % · 3 meses |
+| Revisión de seguridad | Permisos, accesos y manejo de datos | 10–16 h | Incluida en DevOps y asesoría |
+| Diseño UX | Pantallas, flujo de uso, tablero | Lo cubre el ingeniero de producto | 80 h |
+| Asesoría en seguridad y protección de datos | Evaluación de impacto, contratos, controles | Lo cubren las áreas de la clínica | 80–120 h |
 
-### 7.3 Contrapartes internas
+**No se incluye un gestor de proyecto.** El ingeniero de producto entiende el negocio y coordina la parte técnica, y la clínica o la red designa una contraparte interna que prioriza y aprueba.
 
-Horas que deben aportar las áreas de la clínica o de la red. No son un pago, pero sí un costo de oportunidad y un requisito para avanzar.
+### 7.4 Contrapartes internas
+
+Horas que deben aportar las áreas de la clínica o de la red. No son un pago, pero sí un costo de oportunidad y un requisito para avanzar. **Estas horas no se reducen con IA.**
 
 | Contraparte | Aporte | Horas en A | Horas en B |
 |---|---|---|---|
@@ -262,33 +274,37 @@ Horas que deben aportar las áreas de la clínica o de la red. No son un pago, p
 | Área clínica (Oncología) | Validar urgencia clínica y direccionamiento | ~30 | ~80 |
 | Equipo operativo | Explicar el proceso actual, probar el prototipo | ~30 | ~100 |
 | TI y Seguridad de la Información | Aprobar el acceso al buzón, la IA y el manejo de datos | ~24 | ~150 |
-| **Total** | | **~124 horas** | **~450 horas** |
+| Contraparte de producto (solo B) | Priorizar, aprobar entregas, coordinar las clínicas | — | ~150 |
+| **Total** | | **~124 horas** | **~600 horas** |
 
 ---
 
 ## 8. Presupuesto de la Propuesta A
 
-### 8.1 Cronograma (~10 semanas)
+### 8.1 Cronograma (~5–6 semanas)
+
+El desarrollo toma 2–3 semanas de esfuerzo. El calendario es más largo porque depende de las validaciones con Jurídica y de las aprobaciones de TI.
 
 | Fase | Semanas | Entregable |
 |---|---|---|
-| 0. Núcleo y evaluación | 1–3 | Esquema del caso, tabla de reglas, evaluación con los 60 casos y conjunto difícil, elección de modelo |
-| 1. Ingreso y extracción | 4–6 | Apps Script que lee el correo, aplica OCR, extrae con IA y aplica las reglas |
-| 2. Gestión y tablero | 7–8 | Hoja de gestión con validación humana, alertas por correo, tablero en Looker Studio |
-| 3. Validación y ajustes | 9–10 | Pruebas con los equipos, ajustes, documentación y demo |
+| 0. Núcleo y evaluación | 1–2 | Esquema del caso, tabla de reglas, evaluación con los 60 casos y el conjunto difícil, elección de modelo |
+| 1. Ingreso, extracción y gestión | 2–3 | Apps Script que lee el correo, aplica OCR, extrae con IA y aplica las reglas; hoja de gestión, alertas y tablero |
+| 2. Pruebas y revisión de seguridad | 4 | QA independiente, revisión de permisos y accesos, correcciones |
+| 3. Validación con los equipos | 5–6 | Sesiones con Jurídica, el área clínica y el equipo operativo; ajustes; demo |
 
-### 8.2 Costo de desarrollo (valor de mercado)
+### 8.2 Costo de desarrollo
 
-| Perfil | Dedicación | Meses | Costo (M COP) |
-|---|---|---|---|
-| Desarrollador Apps Script | 100 % | 2,5 | 33,8 |
-| Ingeniero de IA / datos | 50 % | 2,5 | 18,8 |
-| Analista funcional / UX | 50 % | 2,5 | 13,1 |
-| Líder técnico | 20 % | 2,5 | 12,0 |
-| **Subtotal personal** | | | **77,6** |
-| Tokens durante el desarrollo | | | 0,2–0,5 |
-| Contingencia (15 %) | | | 11,6 |
-| **Total desarrollo** | | | **~89–90** |
+| Rol | Horas | M COP |
+|---|---|---|
+| Ingeniero de producto: núcleo y evaluación (30 h), Apps Script (30 h), hoja, alertas y Looker (20 h), ajustes y documentación (20 h), validación con los equipos (30 h) | 120–160 | 19,8–26,4 |
+| QA / validación independiente | 30–40 | 3,0–4,0 |
+| Revisión de seguridad | 10–16 | 2,0–3,2 |
+| **Subtotal personal** | **160–216** | **24,8–33,6** |
+| Tokens durante el desarrollo | | 0,2–0,5 |
+| Contingencia (15 %) | | 3,7–5,0 |
+| **Total desarrollo** | | **~29–38** |
+
+Como referencia de mercado, en Colombia una agencia cotiza un producto mínimo de un flujo entre 15 y 30 M COP, sin pruebas de seguridad ni validación con usuarios.
 
 **Dentro del reto**, el equipo académico hace este trabajo, así que **el desembolso de la clínica es prácticamente cero**. La tabla sirve para dimensionar cuánto costaría contratarlo, o internalizarlo después del reto.
 
@@ -299,17 +315,17 @@ Horas que deben aportar las áreas de la clínica o de la red. No son un pago, p
 | Google Workspace, Apps Script, Drive (OCR), Sheets, Looker Studio | 0 adicional | Se asume que la clínica ya tiene Workspace |
 | Proyecto de Google Cloud para Vertex AI | 0 fijo | Solo se paga el consumo |
 | IA (300–600 casos) | USD 2–35 → **~0,01–0,12 M COP** | Según el modelo; con enrutamiento, USD 4–9 |
-| Soporte técnico (16 h) | **~1,35 M COP** | Ajustes al script, cambios de Google, incidentes |
+| Soporte técnico (6–8 h) | **~1,0–1,3 M COP** | Ajustes al script, cambios de Google, incidentes |
 | Ajuste de reglas por Jurídica (4 h) | Interno | Costo de oportunidad |
-| **Total** | **~1,4–1,5 M COP** | |
+| **Total** | **~1,0–1,4 M COP** | |
 
 ### 8.4 Primer año
 
 | Concepto | M COP |
 |---|---|
-| Desarrollo (con contingencia) | ~89 |
-| Operación (9,5 meses × ~1,45 M) | ~14 |
-| **Total del primer año (valor de mercado)** | **~103** |
+| Desarrollo (con contingencia) | ~29–38 |
+| Operación (~10,5 meses × 1,0–1,4 M) | ~11–14 |
+| **Total del primer año (valor de mercado)** | **~40–50** |
 | **Desembolso de la clínica dentro del reto** | **IA (< 1,5 M al año) + ~124 horas internas** |
 
 ### 8.5 Límites de la Propuesta A
@@ -321,40 +337,39 @@ Horas que deben aportar las áreas de la clínica o de la red. No son un pago, p
 
 ## 9. Presupuesto de la Propuesta B
 
-### 9.1 Cronograma (~8 meses hasta el piloto)
+### 9.1 Cronograma (~4,5 meses hasta el piloto)
+
+Solo 2 de los 4,5 meses son de escribir código. El resto es diseño, seguridad, pruebas y piloto, que dependen de terceros y no se aceleran con IA.
 
 | Fase | Meses | Entregable |
 |---|---|---|
-| 1. Descubrimiento y diseño | 1–1,5 | Requisitos de la red, arquitectura, diseño de pantallas, evaluación de impacto en datos |
-| 2. Producto mínimo | 2–6 | Conectores, procesamiento, motor de reglas por clínica, interfaz con roles, auditoría, notificaciones |
-| 3. Seguridad y pruebas | 6–7 | Pruebas de penetración, corrección de hallazgos, pruebas de carga |
-| 4. Piloto en 2 clínicas | 7–8 | Despliegue, capacitación, medición |
-| 5. Extensión a la red | Desde el mes 9 | Incorporación gradual de clínicas (fuera de este presupuesto de desarrollo) |
+| 1. Descubrimiento y diseño | 0,5 | Requisitos de la red, arquitectura, diseño de pantallas, inicio de la evaluación de impacto en datos |
+| 2. Producto mínimo | 2 | Conectores, procesamiento, motor de reglas por clínica, interfaz con roles, auditoría, notificaciones (reutilizando el núcleo de la Propuesta A) |
+| 3. Seguridad y pruebas | 1 | Pruebas de penetración, corrección de hallazgos, pruebas de carga y regresión |
+| 4. Piloto en 2 clínicas | 1 | Despliegue, capacitación, medición |
+| 5. Extensión a la red | Desde el mes 5 | Incorporación gradual de clínicas (incluida en la operación) |
 
 ### 9.2 Costo de desarrollo
 
-| Perfil | Dedicación | Meses | Costo (M COP) |
-|---|---|---|---|
-| Gestor de proyecto / dueño de producto | 100 % | 8 | 120,0 |
-| Líder técnico / arquitecto | 100 % | 8 | 192,0 |
-| Desarrolladores backend (2) | 100 % | 6,5 | 175,5 |
-| Desarrollador frontend | 100 % | 6 | 76,5 |
-| Ingeniero de IA / datos | 100 % | 6 | 90,0 |
-| DevOps / infraestructura | 50 % | 7 | 57,8 |
-| Analista de pruebas (QA) | 100 % | 5 | 45,0 |
-| Analista funcional / UX | 100 % 3 meses + 50 % 3 meses | 4,5 equivalentes | 47,3 |
-| **Subtotal personal** | | | **804,0** |
-| Asesoría en seguridad y protección de datos (~120 h) | | | 24,0 |
-| Pruebas de penetración (estimado, a cotizar) | | | 30–60 |
-| Infraestructura de desarrollo y pruebas (8 meses × USD 200–400) | | | 5–11 |
-| Tokens de desarrollo y pruebas | | | 0,5–1,5 |
-| **Subtotal** | | | **~865–900** |
-| Contingencia (15 %) | | | ~130–135 |
-| **Total desarrollo** | | | **~1.000–1.035** |
+| Rol / concepto | Dedicación | M COP |
+|---|---|---|
+| Ingeniero de producto / líder técnico | 100 % · 4,5 meses (720 h) | 118,8 |
+| Desarrollador senior | 100 % · 3,5 meses (560 h) | 84,0 |
+| Analista de pruebas (QA) | 50 % · 3 meses (240 h) | 24,0 |
+| DevOps / seguridad de infraestructura | 25 % · 3 meses (120 h) | 20,4 |
+| Diseño UX | 80 h | 8,8 |
+| **Subtotal personal** | **1.720 h** | **256,0** |
+| Asesoría en seguridad y protección de datos | 80–120 h | 16–24 |
+| Pruebas de penetración (web + API, a cotizar) | USD 5.000–15.000 | 17–50 |
+| Infraestructura de desarrollo y pruebas (4,5 meses × USD 200–300) | | 3–4,5 |
+| Tokens de desarrollo y pruebas | | 0,5–1,5 |
+| **Subtotal** | | **~293–336** |
+| Contingencia (20 %) | | ~59–67 |
+| **Total desarrollo** | | **~350–400** |
 
 ### 9.3 Infraestructura mensual (producción)
 
-Estimación de orden de magnitud sobre Google Cloud. Hay que validarla con la calculadora de precios de Google para la región que se elija.
+Estimación de orden de magnitud sobre Google Cloud con servicios administrados. Hay que validarla con la calculadora de precios de Google para la región que se elija.
 
 | Componente | Servicio de referencia | USD al mes |
 |---|---|---|
@@ -373,21 +388,22 @@ Estimación de orden de magnitud sobre Google Cloud. Hay que validarla con la ca
 
 | Rubro | 2 clínicas | 5 clínicas | 10 clínicas |
 |---|---|---|---|
-| Equipo de mantenimiento y soporte* | 32,3 M | 32,3 M | ~40 M (más soporte) |
+| Ingeniería (mantenimiento, mejoras, soporte)* | 13,2 M (80 h) | 13,2 M (80 h) | 19,8 M (120 h) |
+| QA y revisión de seguridad | 1,3 M | 1,3 M | 2,0 M |
 | Infraestructura fija | 1,3–3,3 M | 1,3–3,3 M | 2–4 M |
 | OCR + IA | 0,2–0,4 M | 0,6–1,5 M | 1,4–3,5 M |
-| **Total mensual** | **~34–36 M** | **~34–37 M** | **~43–48 M** |
-| **Por clínica** | **~17–18 M** | **~7 M** | **~4–5 M** |
+| **Total mensual** | **~16–18 M** | **~16–19 M** | **~25–29 M** |
+| **Por clínica** | **~8–9 M** | **~3,5 M** | **~2,5–3 M** |
 
-\* 1 desarrollador backend (100 %), DevOps (30 %), dueño de producto (50 %), ingeniero de IA (30 %) y QA (20 %).
+\* Preferiblemente el mismo ingeniero de producto o el desarrollador senior del desarrollo, para no perder el conocimiento del sistema.
 
-**La plataforma solo es rentable con varias clínicas:** el costo fijo del equipo pesa mucho más que el consumo.
+**La plataforma solo es rentable con varias clínicas:** el costo fijo de ingeniería pesa más que el consumo.
 
 ### 9.5 Costos de cumplimiento recurrentes
 
 | Concepto | Frecuencia | Estimado |
 |---|---|---|
-| Pruebas de penetración | Anual | 30–60 M COP (a cotizar) |
+| Pruebas de penetración | Anual | 17–50 M COP (USD 5.000–15.000, a cotizar) |
 | Revisión de contratos de transmisión de datos por clínica | Al incorporar cada clínica | Horas de Jurídica |
 | Evaluación de impacto en protección de datos | Al inicio y ante cambios grandes | Incluida en la asesoría |
 | Auditoría de accesos | Continua | Incluida en monitoreo y operación |
@@ -398,9 +414,9 @@ Si la red exige certificación ISO 27001 para la plataforma, es un proyecto apar
 
 | Concepto | M COP |
 |---|---|
-| Desarrollo (con contingencia) | ~1.000–1.035 |
-| Operación del piloto (4 meses × ~35 M) | ~140 |
-| **Total del primer año** | **~1.100–1.200** |
+| Desarrollo (con contingencia) | ~350–400 |
+| Operación (~7,5 meses, pasando de 2 a 5 clínicas, ~17 M al mes) | ~125–135 |
+| **Total del primer año** | **~480–530** |
 
 ---
 
@@ -410,21 +426,39 @@ Si la red exige certificación ISO 27001 para la plataforma, es un proyecto apar
 
 | Rubro | A (primer año) | B (primer año) |
 |---|---|---|
-| Personas (desarrollo y operación) | ~98 % | ~90–93 % |
-| Infraestructura y OCR | 0 % | ~1–2 % |
-| IA (tokens) | < 1 % | < 1 % |
-| Cumplimiento y seguridad | Interno | ~5–7 % |
+| Personas (desarrollo y operación) | ~88 % | ~72 % |
+| Contingencia | ~10 % | ~12 % |
+| Cumplimiento y seguridad | Interno | ~10 % |
+| Infraestructura y OCR | 0 % | ~5 % |
+| IA (tokens) | ~1 % | < 1 % |
 
-### 10.2 Qué mueve el presupuesto
+### 10.2 Comparación con un equipo tradicional
+
+Si el proyecto se hiciera con un equipo tradicional, sin desarrollo asistido por IA y con roles separados (gestor de proyecto, varios desarrolladores backend y frontend, QA y DevOps de tiempo completo), el costo sería mucho mayor:
+
+| | Equipo tradicional | Equipo ajustado (este documento) |
+|---|---|---|
+| A: duración | ~10 semanas, 4 personas | ~5–6 semanas, 1 persona + apoyo |
+| A: primer año | ~103 M COP | **~40–50 M COP** |
+| B: duración | ~8 meses, 8–9 personas | ~4,5 meses, 2 personas + apoyo |
+| B: desarrollo | ~1.000 M COP | **~350–400 M COP** |
+| B: primer año | ~1.100–1.200 M COP | **~480–530 M COP** |
+| B: costo por clínica al mes (5 clínicas) | ~7 M COP | **~3,5 M COP** |
+
+La reducción viene de **menos personas escribiendo código**, no de tarifas más bajas. Las horas de validación, pruebas, seguridad y contrapartes internas se mantienen.
+
+### 10.3 Qué mueve el presupuesto
 
 | Variable | Si cambia… | Efecto |
 |---|---|---|
-| Salarios del equipo | ±20 % | ±20 % sobre casi todo el presupuesto |
-| Duración del desarrollo | +2 meses en B | +200 M COP aproximadamente |
+| Tarifas del equipo | ±20 % | ±15–18 % sobre el total |
+| Contratación por agencia en vez de contratistas | USD 50–90 por hora | +20–80 % sobre el costo de personal |
+| Duración del desarrollo de B | +1 mes | ~+50 M COP |
+| Aprobaciones institucionales lentas | Calendario más largo | Más meses de equipo esperando; la contingencia cubre ~1 mes |
 | Modelo de IA | De Flash-Lite a Opus | En A: de < 20.000 a ~430.000 COP al mes. En B (10 clínicas): de ~0,3 a ~8,5 M COP al mes |
 | Volumen de casos | ×2 | Duplica IA y OCR, que siguen siendo una fracción menor |
-| TRM | ±10 % | ±10 % sobre IA e infraestructura (impacto total < 1 % en A) |
-| Modelo propio en vez de API | Si la política de datos lo exige | +2,5–6 M COP al mes de GPU y operación |
+| TRM | ±10 % | ±10 % sobre IA, infraestructura y pruebas de penetración |
+| Modelo propio en vez de API | Si la política de datos lo exige | +5–8 M COP al mes de GPU y operación |
 | Política de datos | Si exige alojamiento en Colombia | Puede requerir otro proveedor de nube o servidor propio; costo por cotizar |
 
 ---
@@ -433,13 +467,14 @@ Si la red exige certificación ISO 27001 para la plataforma, es un proyecto apar
 
 | Riesgo | Impacto | Mitigación |
 |---|---|---|
+| **Dependencia de una persona clave** | Si el ingeniero de producto se va, el proyecto se frena | Documentación al día, reglas como datos y no en el código, todo en el repositorio, un segundo ingeniero que conozca el sistema completo (en B), contingencia del 20 % |
+| **Más defectos en código generado con IA** | Retrabajo y fallas en producción | QA independiente, revisión de seguridad, conjunto de evaluación automatizado, pruebas de penetración antes del piloto |
+| **Aprobaciones institucionales lentas** | Alargan el calendario y el costo de personal | Empezar las aprobaciones en la primera semana; usar datos sintéticos mientras tanto |
 | **Cambios de precio de los proveedores de IA** | Gemini 3.8 Flash duplica precio en enero de 2027; algunos modelos se retiran | Capa de IA intercambiable; reevaluar el modelo cada trimestre con el conjunto de evaluación |
 | **Retiro de modelos** | Hay que migrar y volver a evaluar | Presupuestar horas de reevaluación en la operación |
 | **Documentos más largos de lo previsto** | Más tokens y más páginas de OCR | Enviar solo las secciones relevantes; medir el tamaño real en el piloto |
-| **Aprobaciones institucionales lentas** | Alargan el cronograma y el costo de personal | Empezar las aprobaciones en la fase 0; usar datos sintéticos mientras tanto |
 | **Volumen real distinto del supuesto** | Cambia el costo por clínica de B | Medir el volumen en el piloto de A antes de decidir B |
 | **Exigencias de seguridad mayores** | Certificaciones, auditorías, alojamiento local | Plantearlas en la fase de descubrimiento de B |
-| **Rotación de personal** | Retrasos y pérdida de conocimiento | Documentación, código en repositorio, reglas como datos |
 
 ---
 
@@ -457,6 +492,20 @@ Consultadas el 17 de noviembre de 2026. Los valores de terceros son referencias 
 - [Precios de GPU — Google Cloud](https://cloud.google.com/products/compute/gpus-pricing)
 - [L4 en Google Cloud — Deploybase](https://deploybase.ai/articles/l4-on-google-cloud-pricing-specs-how-to-rent)
 - [Precios de Document AI — Google Cloud](https://cloud.google.com/document-ai/pricing)
+
+**Desarrollo asistido por IA y cotizaciones de mercado**
+- [Datos de METR, McKinsey y GitHub sobre productividad con IA — ValueAdd VC](https://valueaddvc.com/blog/ai-coding-productivity-study-data-what-metr-mckinsey-and-github-actually-found-in-2026)
+- [Velocidad de desarrollo y deuda técnica con IA 2026 — CodeNinety](https://codeninety.com/research/developer-productivity-and-ai-tech-debt-2026)
+- [Tarifas de desarrolladores en Colombia — Lemon.io](https://lemon.io/rate-calculator/colombia/)
+- [Tarifas de desarrolladores en Colombia, Q4 2026 — OctogleHire](https://www.octoglehire.com/rates/colombia)
+- [Tarifas de desarrollo web en Colombia 2026 — Elsasto](https://elsasto.com/blog/tarifas-desarrollo-web-colombia-2026)
+- [Tarifas nearshore 2026 — HireInSouth](https://www.hireinsouth.com/post/nearshore-development-rates)
+- [Costo de un MVP en Colombia 2026 — Togrow](https://togrowagencia.com/mvp-producto-minimo-viable-que-es-costo/)
+- [Costo de una app en Colombia 2026 — Granweb](https://www.granweb.io/co/blog/desarrollar-una-app-colombia-2026)
+- [Software a medida en Colombia — DIPA Solutions](https://www.dipasolutions.com/es/blog/desarrollo-software-medida-colombia/)
+- [Costo de software a medida en la era de la IA — Gintic](https://gintic.com.co/costo-desarrollo-software-medida-ia-colombia/)
+- [Costo de las pruebas de penetración — DeepStrike](https://deepstrike.io/blog/costo-de-las-pruebas-de-penetracion)
+- [Cuánto cuesta un pentest — Startup Defense](https://www.startupdefense.io/es-us/blog/cuanto-cuesta-un-pentest)
 
 **Tasa de cambio**
 - [TRM del 13 de noviembre de 2026 — Diario del Sur](https://www.diariodelsur.com.co/noticias/dolar-alcanzo-su-nivel-mas-alto-en-mas-de-un-mes-este-13-de-noviembre)
