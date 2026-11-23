@@ -2,6 +2,53 @@
 
 Mockup navegable para mostrar cómo funcionaría la plataforma descrita en la [Propuesta B](../docs/PROPUESTAS.md#6-propuesta-b--plataforma-para-la-red-keralty). Es una maqueta para presentar la idea: **no procesa documentos reales ni se conecta a correo, IA o Imperium**. Todo funciona con datos ficticios.
 
+## Mockup navegable (ya construido)
+
+Maqueta de la plataforma de triaje asistido de tutelas para la red de clínicas. **No procesa documentos reales ni se conecta a correo, IA o Imperium.** Todo funciona en el navegador con datos ficticios.
+
+## Cómo abrirlo
+
+Abre `index.html` con doble clic (Chrome, Edge o Firefox). No necesita instalación ni servidor. La tipografía (Figtree) se descarga de Google Fonts; sin internet se usa una fuente de respaldo.
+
+## Cómo recorrerlo
+
+Abajo hay una **barra de recorrido guiado** de 7 pasos con botones *Anterior* y *Siguiente*. Cada paso cambia de rol y de pantalla automáticamente:
+
+1. Inicio de sesión: clínica y rol.
+2. Bandeja ordenada por urgencia (rol Operativo).
+3. Detalle del caso T-0412: evidencia resaltada, regla aplicada y confirmación.
+4. Líder de área: el caso confirmado aparece en *Mis casos*.
+5. Revisión en GRIS: caso duplicado comparado lado a lado.
+6. Administrador de clínica: tabla de reglas y umbral editable.
+7. Administrador de red: indicadores consolidados, sin casos individuales.
+
+También se puede entrar con cualquier rol desde el inicio de sesión. El botón **Reiniciar demo** devuelve todo al estado inicial. **Ocultar notas** quita los recuadros «Qué mirar», y **A− / A+** cambia el tamaño del texto.
+
+## Pantallas incluidas
+
+Inicio de sesión · Bandeja de casos · Detalle del caso · Revisión en GRIS · Mis casos · Configuración de la clínica · Usuarios y roles · Indicadores de la clínica · Vista de la red · Auditoría · Notificaciones.
+
+## Archivos
+
+| Archivo | Contenido |
+|---|---|
+| `index.html` | Página única |
+| `css/styles.css` | Estilo inspirado en keralty.com (Figtree, azul `#002F87`, verde `#008767`, tarjetas redondeadas, botones tipo píldora) |
+| `js/app.js` | Pantallas, roles, recorrido guiado y acciones |
+| `data/data.js` | Casos, reglas, áreas, usuarios e indicadores ficticios |
+
+## Datos
+
+- 3 clínicas ficticias, 18 casos de ejemplo (14 en la clínica principal).
+- Cubren los seis tipos de actuación y los cuatro colores del semáforo, un duplicado, una competencia dudosa, un texto ilegible y un plazo vencido.
+- No hay nombres reales de personas, pacientes ni despachos. No se incluye el logo de Keralty.
+- Las reglas (R03–R12) son **ilustrativas**; las oficiales se validan con Jurídica.
+- Los cambios que haces en la demo se guardan en el navegador (localStorage) hasta que pulses *Reiniciar demo*.
+
+---
+
+# Especificación del mockup
+
 ## Objetivo de la demo
 
 Mostrar en pocos minutos que:
