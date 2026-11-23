@@ -1,4 +1,3 @@
-/* Mockup navegable · Propuesta B. Sin servidor: todo ocurre en el navegador con datos ficticios. */
 (function () {
   "use strict";
   const D = window.DATA;
@@ -6,7 +5,6 @@
   const SEM_ORDER = { ROJO: 0, GRIS: 1, AMARILLO: 2, VERDE: 3 };
   const ACTIVE_STATES = ["Nuevo", "En validación", "Por revisar", "Asignado", "En gestión"];
 
-  /* ---------- Estado ---------- */
   const fresh = () => ({
     v: 1,
     clinica: "norte",
@@ -28,16 +26,15 @@
   });
   let S = fresh();
 
-  const save = () => { try { localStorage.setItem(STORE_KEY, JSON.stringify(S)); } catch (e) { /* sin almacenamiento */ } };
+  const save = () => { try { localStorage.setItem(STORE_KEY, JSON.stringify(S)); } catch (e) { } };
   const load = () => {
     try {
       const raw = localStorage.getItem(STORE_KEY);
       if (raw) { const o = JSON.parse(raw); if (o && o.casos && o.v === 1) return Object.assign(fresh(), o); }
-    } catch (e) { /* ignorar */ }
+    } catch (e) { }
     return null;
   };
 
-  /* ---------- Utilidades ---------- */
   const $ = (s, r) => (r || document).querySelector(s);
   const esc = (v) => String(v == null ? "" : v).replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
   const roleName = (id) => (D.roles.find((r) => r.id === id) || {}).nombre || "";
@@ -65,7 +62,6 @@
 
   const sortCases = (arr) => arr.slice().sort((a, b) => (SEM_ORDER[a.semaforo] - SEM_ORDER[b.semaforo]) || ((a.horas == null ? -999 : a.horas) - (b.horas == null ? -999 : b.horas)));
 
-  /* ---------- Historial y auditoría ---------- */
   const addHist = (c, texto) => { c.hist.push({ t: clock(), who: S.rol ? roleName(S.rol) : "Sistema", texto }); };
   const logAct = (accion, caso, detalle) => {
     S.log.unshift({ t: clock(), who: S.rol ? roleName(S.rol) : "Sistema", clinica: clinicName(S.clinica), accion, caso: caso || "—", detalle: detalle || "" });
@@ -94,7 +90,6 @@
     }
   };
 
-  /* ---------- Reglas: umbral ---------- */
   const applyUmbral = (u) => {
     S.casos.forEach((c) => {
       if (["R07", "R08"].includes(c.regla) && !c.corregido && c.horas != null) {
@@ -109,7 +104,6 @@
     return { am, ve: ruled.length - am };
   };
 
-  /* ---------- Notificaciones ---------- */
   const notifs = () => {
     const cs = clinicCases();
     const out = [];
@@ -128,7 +122,6 @@
     return out;
   };
 
-  /* ---------- Navegación por rol ---------- */
   const NAV = {
     operativo: [["bandeja", "Bandeja de casos"], ["gris", "Revisión en GRIS"], ["notificaciones", "Notificaciones"]],
     juridica: [["bandeja", "Bandeja de casos"], ["gris", "Revisión en GRIS"], ["indicadores", "Indicadores"], ["config", "Reglas de la clínica"], ["notificaciones", "Notificaciones"]],
@@ -151,7 +144,6 @@
     notificaciones: "<b>Qué mirar:</b> alertas de casos en ROJO y GRIS, nuevas asignaciones y plazos próximos.",
   };
 
-  /* ---------- Recorrido guiado ---------- */
   const STEPS = [
     { title: "Inicio de sesión", text: "Se elige la clínica y el rol. Cada clínica ve solo sus casos. Pulsa Siguiente para entrar como Operativo.", set: () => { S.rol = null; S.route = "login"; S.clinica = "norte"; } },
     { title: "La bandeja ordena por urgencia", text: "Como Operativo, los casos nuevos llegan ordenados por color y horas restantes. Abre el caso T-0412 (ROJO, medida provisional).", set: () => { S.rol = "operativo"; S.route = "bandeja"; S.clinica = "norte"; } },
@@ -172,7 +164,6 @@
     render(); window.scrollTo({ top: 0 });
   };
 
-  /* ---------- Renderizado ---------- */
   function renderHeader() {
     const h = $("#header");
     const logged = !!S.rol;
@@ -235,7 +226,6 @@
   const crumbs = (...parts) => `<div class="crumbs">${parts.map((p, i) => (i === parts.length - 1 ? `<b>${esc(p)}</b>` : esc(p))).join(" / ")}</div>`;
   const noteBox = () => (S.notes && NOTES[S.route] ? `<div class="note">${ICON.info}<p>${NOTES[S.route]}</p></div>` : "");
 
-  /* --- Bandeja --- */
   function bandejaTable() {
     const f = S.filters;
     const rows = sortCases(clinicCases()).filter((c) => (!f.color || c.semaforo === f.color) && (!f.area || c.area === f.area) && (!f.estado || c.estado === f.estado));
@@ -271,7 +261,6 @@
       <div id="bandeja-results">${bandejaTable()}</div>`;
   }
 
-  /* --- Detalle --- */
   const mark = (id, text) => (String(text).startsWith("[") ? `<span class="redact">${esc(text)}</span>` : `<mark class="ev" data-ev="${id}">${esc(text)}</mark>`);
   function docHtml(c) {
     return `<div class="doc"><div class="doc-head">${mark("juzgado", c.juzgado)} · Radicado ${mark("radicado", c.radicado)}</div>
@@ -323,7 +312,6 @@
       </div>`;
   }
 
-  /* --- Revisión GRIS --- */
   function renderGris() {
     const list = clinicCases().filter((c) => c.semaforo === "GRIS");
     if (!list.length) return `${crumbs("Inicio", "Revisión en GRIS")}<div class="page-head"><h1>Revisión en GRIS</h1></div>${noteBox()}<div class="card empty">No hay casos en GRIS en esta clínica.</div>`;
@@ -360,7 +348,6 @@
         <div style="margin-top:14px"><button class="linkish" data-action="open-case" data-id="${c.id}">Ver el documento completo del caso ${c.id}</button></div></div></div></div>`;
   }
 
-  /* --- Mis casos --- */
   function renderMisCasos() {
     const rows = sortCases(clinicCases().filter((c) => c.area === "Oncología" && ["Asignado", "En gestión", "Respondido"].includes(c.estado)));
     const wait = clinicCases().filter((c) => c.area === "Oncología" && ["Nuevo", "En validación"].includes(c.estado)).length;
@@ -373,7 +360,6 @@
         : `<div class="card empty">Aún no hay casos asignados a Oncología.</div>`}`;
   }
 
-  /* --- Configuración --- */
   function renderConfig() {
     const pv = umbralPreview(S.umbral);
     const editable = S.rol === "admin_clinica";
@@ -394,7 +380,6 @@
       ${D.areas.map((a) => `<tr><td><b>${esc(a.id)}</b></td><td>${esc(a.responsable)}</td><td>${esc(a.correo)}</td></tr>`).join("")}</tbody></table></div>`;
   }
 
-  /* --- Usuarios --- */
   function renderUsuarios() {
     return `${crumbs("Inicio", "Usuarios y roles")}
       <div class="page-head"><div><h1>Usuarios y roles</h1><p>Quién puede hacer qué en ${esc(clinicName(S.clinica))}.</p></div></div>
@@ -412,7 +397,6 @@
       ${D.roles.map((r) => `<tr><td><b>${esc(r.nombre)}</b></td><td>${esc(r.desc)}</td></tr>`).join("")}</tbody></table></div>`;
   }
 
-  /* --- Indicadores --- */
   const barRow = (label, v, max, cls) => `<div class="bar-row"><span>${esc(label)}</span><div class="bar-track"><i class="${cls || ""}" style="width:${max ? Math.round((v / max) * 100) : 0}%"></i></div><b class="num">${v}</b></div>`;
   function renderIndicadores() {
     const cs = clinicCases();
@@ -440,7 +424,6 @@
       <div class="card"><h3 style="margin-bottom:12px">Horas restantes de los casos activos</h3><div class="bars">${buckets.map(([l, n]) => barRow(l, n, Math.max(...buckets.map((x) => x[1]), 1), l === "Vencidos" ? "ROJO" : "")).join("")}</div></div>`;
   }
 
-  /* --- Red --- */
   function renderRed() {
     const t = D.red.reduce((a, r) => ({ casos: a.casos + r.casos, rojo: a.rojo + r.rojo, gris: a.gris + r.gris, venc: a.venc + r.vencimientos }), { casos: 0, rojo: 0, gris: 0, venc: 0 });
     const max = Math.max(...D.red.map((r) => r.casos));
@@ -458,7 +441,6 @@
       <div class="card"><h3 style="margin-bottom:12px">Casos por clínica</h3><div class="bars">${D.red.map((r) => barRow(r.clinica.replace("Clínica ", ""), r.casos, max)).join("")}</div></div>`;
   }
 
-  /* --- Auditoría --- */
   function renderAuditoria() {
     return `${crumbs("Inicio", "Auditoría")}
       <div class="page-head"><div><h1>Auditoría</h1><p>Registro de quién vio, cambió o validó cada caso. Las acciones que hagas en la demo aparecen aquí.</p></div></div>
@@ -467,7 +449,6 @@
       ${S.log.map((l) => `<tr class="audit-row"><td>${esc(l.t)}</td><td>${esc(l.who)}</td><td><b>${esc(l.accion)}</b></td><td>${esc(l.caso)}</td><td>${esc(l.detalle)}</td></tr>`).join("")}</tbody></table></div>`;
   }
 
-  /* --- Notificaciones --- */
   function renderNotificaciones() {
     const n = notifs();
     return `${crumbs("Inicio", "Notificaciones")}
@@ -510,7 +491,6 @@
     save();
   }
 
-  /* ---------- Modales y avisos ---------- */
   const closeModal = () => { $("#overlay").innerHTML = ""; };
   function toast(msg) {
     const t = document.createElement("div");
@@ -524,7 +504,6 @@
   }
   const areaOptions = (sel) => D.areas.map((a) => `<option ${a.id === sel ? "selected" : ""}>${esc(a.id)}</option>`).join("");
 
-  /* ---------- Acciones ---------- */
   function flashEv(id) {
     const marks = document.querySelectorAll(`mark.ev[data-ev="${id}"]`);
     if (!marks.length) return;
@@ -649,7 +628,6 @@
     }
   });
 
-  /* ---------- Inicio ---------- */
   const saved = load();
   if (saved) S = saved;
   S.v = 1;

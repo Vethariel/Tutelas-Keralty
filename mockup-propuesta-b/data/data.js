@@ -1,6 +1,3 @@
-/* Datos 100 % ficticios para el mockup de la Propuesta B.
-   No hay nombres reales de personas, pacientes ni despachos judiciales.
-   Los casos están inspirados en los tipos y colores de la base sintética de Kantera. */
 window.DATA = {
   clinicas: [
     { id: "norte", nombre: "Clínica Sede Norte" },
@@ -25,7 +22,6 @@ window.DATA = {
     { id: "Urgencias", responsable: "Líder de Urgencias", correo: "urgencias@ejemplo.test" },
   ],
 
-  /* Reglas ilustrativas del mockup. Las reglas oficiales se validan con Jurídica. */
   reglas: [
     { id: "R03", cond: "Plazo aparentemente vencido", sal: "ROJO", adv: "Atender de inmediato y avisar a Jurídica" },
     { id: "R04", cond: "Tipo de actuación = medida provisional", sal: "ROJO", adv: "Hay una orden con plazo corto" },
@@ -39,9 +35,6 @@ window.DATA = {
     { id: "R12", cond: "Palabras clave de la petición → área sugerida", sal: "Área", adv: "Medicamento → Farmacia; cita oncológica → Oncología; etc." },
   ],
 
-  /* Campos de cada caso:
-     tipo_frase / peticion_texto / plazo_literal / riesgo_texto se usan para generar el documento
-     y para resaltar la evidencia. horas = horas restantes al plazo (negativo = vencido). */
   casos: [
     { id: "T-0412", clinica: "norte", canal: "Correo", recibido: "Hoy 07:40", tipo: "Medida provisional",
       juzgado: "Juzgado Civil Municipal de Ciudad Ejemplo", radicado: "2026-00412", fecha: "3 de noviembre de 2026", iniciales: "A. B.",
@@ -175,7 +168,6 @@ window.DATA = {
       horas: 20, urg_j: "Media", urg_c: "Baja", semaforo: "AMARILLO", regla: "R07", area: "Hospitalización", conf: 87, estado: "Asignado",
       resumen: "El juez ordena programar un procedimiento ambulatorio en 48 horas." },
 
-    /* Otras clínicas (solo para mostrar la separación de datos) */
     { id: "T-1101", clinica: "sur", canal: "Correo", recibido: "Hoy 08:00", tipo: "Medida provisional",
       juzgado: "Juzgado Primero Municipal de Villa Muestra", radicado: "2026-01101", fecha: "3 de noviembre de 2026", iniciales: "A. A.",
       tipo_frase: "Auto que decreta medida provisional", peticion_texto: "entrega de insumos médicos domiciliarios",
